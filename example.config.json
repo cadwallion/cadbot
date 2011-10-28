@@ -1,0 +1,11 @@
+{
+  "envvars": {
+    "adapter": "irc",
+    "name":   "CadBot",
+    "IRC_NICK": "CadBot",
+    "IRC_PORT": "6667",
+    "IRC_ROOMS": "#coding",
+    "IRC_SERVER": "deathknight.mmoirc.com",
+    "IRC_NICKSERV_PASSWORD": "foo"
+  }
+}
