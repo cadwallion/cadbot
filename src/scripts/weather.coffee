@@ -52,7 +52,7 @@ class Weather
         for item, idx in data.weather
           condition = item.weatherDesc[0].value
           windSpeed = "#{item.winddir16Point} wind at #{item.windspeedKmph}kmph/#{item.windspeedMiles}mph"
-          @msg.send "#{item.date}: #{condition} and #{item.temp_C}C/#{item.temp_F}F with #{windSpeed}"
+          @msg.send "#{item.date}: #{condition}, High #{item.tempMaxC}C/#{item.tempMaxF}F, Low #{item.tempMinC}C/#{item.tempMinF}F with #{windSpeed}"
 
   get: (callback) ->
     url = "http://free.worldweatheronline.com/feed/weather.ashx?q=#{@code}&cc=yes&format=json&includeLocation=yes&key=ece8d8682c193256112104&num_of_days=5"
