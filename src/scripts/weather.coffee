@@ -23,15 +23,15 @@ module.exports = (robot) ->
 
 class Weather
   constructor: (@msg) ->
-    @parseCode @msg.match[2]
+    @parseCode
 
-  parseCode: (msg) ->
-    code = msg.match[2]
+  parseCode: ->
+    code = @msg.match[2]
     if code?
       @code = code.toString().replace(/^\s/,'')
     else
-      if msg.message.user.location?
-        @code = msg.message.user.location
+      if @msg.message.user.location?
+        @code = @msg.message.user.location
       else
         @msg.send "You did not supply a location, and I have no location on file"
 
