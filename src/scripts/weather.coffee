@@ -23,7 +23,7 @@ module.exports = (robot) ->
 
 class Weather
   constructor: (@msg) ->
-    @parseCode
+    @parseCode()
 
   parseCode: ->
     code = @msg.match[2]
