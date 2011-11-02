@@ -12,9 +12,16 @@ module.exports = (robot) ->
       Weather[msg.match[1]] code
     else
       msg.send "You did not supply a location, and I have no location on file"
+
   robot.respond /my location is (.+)/i, (msg) ->
     msg.message.user.location = msg.match[1]
     msg.send "Your location has been saved"
+  robot.respond /what is my location\?/i, (msg) ->
+    user = msg.message.user
+    if user.location?
+      msg.send "Your location is: #{user.location}"
+    else
+      msg.send "I do not have a location on file for you"
 
 Weather =
   parseCode: (msg) ->
