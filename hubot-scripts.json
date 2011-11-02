@@ -13,5 +13,6 @@
   "keep-alive.coffee",
   "storage.coffee",
   "remind.coffee",
-  "quote.coffee"
+  "quote.coffee",
+  "redis-brain.coffee"
 ]
