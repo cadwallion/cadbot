@@ -8,7 +8,7 @@ querystring = require('querystring')
 module.exports = (robot) ->
   robot.respond /(weather|forecast)( .+)?/i, (msg) ->
     weather = new Weather(msg)
-    weather[msg.match[1]]
+    weather[msg.match[1]]()
 
   robot.respond /my location is (.+)/i, (msg) ->
     msg.message.user.location = msg.match[1]
