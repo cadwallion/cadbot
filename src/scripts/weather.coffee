@@ -16,7 +16,7 @@ module.exports = (robot) ->
     msg.message.user.location = msg.match[1]
     msg.send "Your location has been saved"
 
-class Weather
+Weather =
   parseCode: (msg) ->
     code = msg.match[2]
     if code?
