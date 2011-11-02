@@ -7,15 +7,13 @@ querystring = require('querystring')
 
 module.exports = (robot) ->
   robot.respond /(weather|forecast)( .+)?/i, (msg) ->
-    code = Weather.parseCode(msg)
-    if code?
-      Weather[msg.match[1]] code
-    else
-      msg.send "You did not supply a location, and I have no location on file"
+    weather = new Weather(msg)
+    weather[msg.match[1]]
 
   robot.respond /my location is (.+)/i, (msg) ->
     msg.message.user.location = msg.match[1]
     msg.send "Your location has been saved as #{msg.message.user.location}"
+
   robot.respond /what is my location\?/i, (msg) ->
     user = msg.message.user
     if user.location?
@@ -23,54 +21,50 @@ module.exports = (robot) ->
     else
       msg.send "I do not have a location on file for you"
 
-Weather =
+class Weather
+  constructor: (@msg) ->
+    @parseCode @msg.match[2]
+
   parseCode: (msg) ->
     code = msg.match[2]
     if code?
-      return code.toString().replace(/^\s/,'')
+      @code = code.toString().replace(/^\s/,'')
     else
       if msg.message.user.location?
-        return msg.message.user.location
+        @code = msg.message.user.location
       else
-        return null
+        @msg.send "You did not supply a location, and I have no location on file"
 
-  weather: (code) ->
-    @get code, (data) =>
-      if data?
-        item = data.current_condition[0]
-        location = @region data.nearest_area[0]
+  weather: ->
+    if @code?
+      @get (data) =>
+        location = Weather.region data.nearest_area[0]
         condition = item.weatherDesc[0].value
         windSpeed = "#{item.winddir16Point} wind at #{item.windspeedKmph}kmph/#{item.windspeedMiles}mph"
-
-        response = "#{location}: #{item.temp_C}C/#{item.temp_F}F and #{condition} with #{windSpeed}"
-        msg.send response
-      else
-        msg.send "That place does not seem to exist in this reality"
-
-  forecast: (code) ->
-    @get code, (data) =>
-      if data?
-        location = @region data.nearest_area[0]
-        msg.send "Forecast for #{location}:"
+        @msg.send "#{location}: #{condition}, #{item.temp_C}C/#{item.temp_F}F with #{windSpeed}"
+      
+  forecast: ->
+    if @code?
+      @get (data) =>
+        location = Weather.region data.nearest_area[0]
+        @msg.send "Forecast for #{location}:"
         for item, idx in data.weather
           condition = item.weatherDesc[0].value
           windSpeed = "#{item.winddir16Point} wind at #{item.windspeedKmph}kmph/#{item.windspeedMiles}mph"
-          msg.send "#{item.data}: #{condition} and #{item.temp_C}C/#{item.temp_F}F with #{windSpeed}"
-      else
-        msg.send "That place does not seem to exist in this reality"
+          @msg.send "#{item.date}: #{condition} and #{item.temp_C}C/#{item.temp_F}F with #{windSpeed}"
 
-  get: (code, callback) ->
-    url = "http://free.worldweatheronline.com/feed/weather.ashx?q=#{code}&cc=yes&format=json&includeLocation=yes&key=ece8d8682c193256112104&num_of_days=5"
-    request url, (error, res, body) ->
+  get: (callback) ->
+    url = "http://free.worldweatheronline.com/feed/weather.ashx?q=#{@code}&cc=yes&format=json&includeLocation=yes&key=ece8d8682c193256112104&num_of_days=5"
+    request url, (error, res, body) =>
       data = JSON.parse(body).data
       if data.error?
-        callback(null)
+        @msg.send "That place does not seem to exist in this reality"
       else
         callback(data)
+
   region: (nearest_area) ->
     if nearest_area.region?
       region = "#{nearest_area.region[0].value}, "
     else
       region = ""
     return "#{nearest_area.areaName[0].value}, #{region}#{nearest_area.country[0].value}"
-
