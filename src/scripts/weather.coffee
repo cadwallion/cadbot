@@ -60,11 +60,14 @@ class Weather
       if error?
         @msg.send "I cannot process something in your request"
       else
-        data = JSON.parse(body).data
-        if data.error?
-          @msg.send "That place does not seem to exist in this reality"
-        else
-          callback(data)
+        try
+          data = JSON.parse(body).data
+          if data.error?
+            @msg.send "That place does not seem to exist in this reality"
+          else
+            callback(data)
+        catch error
+          @msg.send "I cannot process somethign in your request"
 
   region: (nearest_area) ->
     if nearest_area.region?
