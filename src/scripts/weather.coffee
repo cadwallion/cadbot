@@ -38,7 +38,7 @@ class Weather
   weather: ->
     if @code?
       @get (data) =>
-        location = Weather.region data.nearest_area[0]
+        location = @region data.nearest_area[0]
         condition = item.weatherDesc[0].value
         windSpeed = "#{item.winddir16Point} wind at #{item.windspeedKmph}kmph/#{item.windspeedMiles}mph"
         @msg.send "#{location}: #{condition}, #{item.temp_C}C/#{item.temp_F}F with #{windSpeed}"
@@ -46,7 +46,7 @@ class Weather
   forecast: ->
     if @code?
       @get (data) =>
-        location = Weather.region data.nearest_area[0]
+        location = @region data.nearest_area[0]
         @msg.send "Forecast for #{location}:"
         for item, idx in data.weather
           condition = item.weatherDesc[0].value
