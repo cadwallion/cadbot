@@ -12,5 +12,7 @@
   "eight-ball.coffee",
   "keep-alive.coffee",
   "storage.coffee",
-  "remind.coffee"
+  "remind.coffee",
+  "quote.coffee",
+  "weather.coffee"
 ]
