@@ -57,11 +57,14 @@ class Weather
   get: (callback) ->
     url = "http://free.worldweatheronline.com/feed/weather.ashx?q=#{@code}&cc=yes&format=json&includeLocation=yes&key=ece8d8682c193256112104&num_of_days=5"
     request url, (error, res, body) =>
-      data = JSON.parse(body).data
-      if data.error?
-        @msg.send "That place does not seem to exist in this reality"
+      if error?
+        @msg.send "I cannot process something in your request"
       else
-        callback(data)
+        data = JSON.parse(body).data
+        if data.error?
+          @msg.send "That place does not seem to exist in this reality"
+        else
+          callback(data)
 
   region: (nearest_area) ->
     if nearest_area.region?
