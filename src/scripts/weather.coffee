@@ -28,7 +28,7 @@ class Weather
   parseCode: ->
     code = @msg.match[2]
     if code?
-      @code = code.toString().replace(/^\s/,'')
+      @code = querystring.escape code.toString().replace(/^\s/,'')
     else
       if @msg.message.user.location?
         @code = @msg.message.user.location
