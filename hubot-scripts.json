@@ -11,8 +11,15 @@
   "shipit.coffee",
   "eight-ball.coffee",
   "keep-alive.coffee",
-  "storage.coffee",
   "remind.coffee",
   "quote.coffee",
-  "redis-brain.coffee"
+  "redis-brain.coffee",
+  "walmart.coffee",
+  "wikipedia.coffee",
+  "xkcd.coffee",
+  "tvshow.coffee",
+  "shorten.coffee",
+  "cowsay.coffee",
+  "coderwall.coffee",
+  "ascii.coffee"
 ]
