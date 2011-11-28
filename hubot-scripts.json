@@ -1,11 +1,6 @@
 [
-  "rules.coffee",
-  "google-images.coffee",
-  "youtube.coffee",
   "storage.coffee",
-  "maps.coffee",
   "ping.coffee",
-  "help.coffee",
   "polite.coffee",
   "google.coffee",
   "shipit.coffee",
