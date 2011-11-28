@@ -1,1 +1,1 @@
-web: ./bin/hubot -a irc -n CadBot
+web: hubot -a irc -n CadBot
