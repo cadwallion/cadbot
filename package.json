@@ -2,7 +2,7 @@
   "author": "Cadwallion <cadwallion@gmail.com>",
   "name": "cadbot",
   "description": "bot built on top of Hubot",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/cadwallion/cadbot.git"
