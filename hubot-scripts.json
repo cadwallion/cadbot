@@ -7,7 +7,6 @@
   "keep-alive.coffee",
   "remind.coffee",
   "quote.coffee",
-  "redis-brain.coffee",
   "walmart.coffee",
   "wikipedia.coffee",
   "xkcd.coffee",
