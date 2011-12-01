@@ -2,7 +2,6 @@ Redis = require 'redis'
 Url   = require 'url'
 
 info   = Url.parse process.env.REDISTOGO_URL || 'redis://localhost:6379'
-client = Redis.createClient(info.port, info.hostname)
 
 module.exports = (robot) ->
   robot.respond /pic ([\S-]+)$/, (msg) ->
