@@ -1,5 +1,7 @@
 [
   "ping.coffee",
+  "dice.coffee",
+  "getajob.coffee",
   "polite.coffee",
   "google.coffee",
   "shipit.coffee",
