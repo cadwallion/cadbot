@@ -8,6 +8,7 @@
   "remind.coffee",
   "quote.coffee",
   "walmart.coffee",
+  "redis-brain.coffee",
   "wikipedia.coffee",
   "xkcd.coffee",
   "tvshow.coffee",
