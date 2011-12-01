@@ -1,9 +1,14 @@
 Redis = require 'redis'
 Url   = require 'url'
 
-info   = Url.parse process.env.REDISTOGO_URL || 'redis://localhost:6379'
-
 module.exports = (robot) ->
+
+  info   = Url.parse process.env.REDISTOGO_URL || 'redis://localhost:6379'
+  client = Redis.createClient(info.port, info.hostname)
+
+  if info.auth
+      client.auth info.auth.split(":")[1]
+
   robot.respond /pic ([\S-]+)$/, (msg) ->
     if msg.match[1] is 'list'
       client.hkeys "pics", (err, pics) ->
