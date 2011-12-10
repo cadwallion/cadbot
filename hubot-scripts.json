@@ -17,5 +17,6 @@
   "shorten.coffee",
   "cowsay.coffee",
   "coderwall.coffee",
-  "ascii.coffee"
+  "ascii.coffee",
+  "wolfram.coffee"
 ]
