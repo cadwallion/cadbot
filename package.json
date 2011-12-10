@@ -15,7 +15,7 @@
     "redis":          "0.6.7",
     "hubot":          "2.0.7",
     "hubot-scripts":  "2.0.3",
-    "hubot-irc":      "0.0.3",
+    "hubot-irc":      "0.0.5",
     "request":        "2.1.1",
     "optparse":       "1.0.3",
     "wolfram":        "0.2.0"
