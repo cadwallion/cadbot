@@ -1,1 +1,1 @@
-app: bin/hubot -a irc -n CadBot
+app: bin/hubot -a irc -n Lukas
