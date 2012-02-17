@@ -1,3 +1,10 @@
+# Manages pics in redis for easy access
+#
+# pic list - lists all pics available
+# 
+# pic set <key> <url> - sets the picture for that key
+#
+# pic <key> - posts picture for that key
 Redis = require 'redis'
 Url   = require 'url'
 

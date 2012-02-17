@@ -18,5 +18,6 @@
   "cowsay.coffee",
   "coderwall.coffee",
   "ascii.coffee",
+  "play.coffee",
   "wolfram.coffee"
 ]
