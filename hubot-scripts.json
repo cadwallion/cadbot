@@ -19,5 +19,6 @@
   "coderwall.coffee",
   "ascii.coffee",
   "play.coffee",
+  "github-credentials.coffee",
   "wolfram.coffee"
 ]
