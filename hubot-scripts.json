@@ -20,5 +20,6 @@
   "ascii.coffee",
   "play.coffee",
   "github-credentials.coffee",
+  "tweet-content.coffee",
   "wolfram.coffee"
 ]
