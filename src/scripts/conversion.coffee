@@ -2,7 +2,7 @@
 #
 # <AMOUNT><CURRENCY> in <CURRENCY> - Converts from one currency to the other
 module.exports = (bot) ->
-  bot.respond /([\d|\.\,]+)(\w+) in (\w)/i, (msg) ->
+  bot.respond /([\d|\.|\,]+)(\w+) in (\w)/i, (msg) ->
     from = msg.matches[0] + msg.matches[1]
     to = msg.matches[2]
     msg.http("http://www.google.com/ig/calculator?hl=en&q=#{from}=?#{to}")
