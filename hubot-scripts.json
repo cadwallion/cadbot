@@ -16,5 +16,7 @@
   "tweet-content.coffee",
   "wolfram.coffee",
   "git-help.coffee",
+  "github-status.coffee",
+  "steam.coffee",
   "isup.coffee"
 ]
