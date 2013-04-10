@@ -15,7 +15,10 @@
     "hubot-irc":      "0.1.12",
     "request":        "2.1.1",
     "optparse":       "1.0.4",
-    "wolfram":        "0.2.6"
+    "wolfram":        "0.2.6",
+    "underscore":     "1.4.4",
+    "htmlparser":     "1.7.6",
+    "soupselect":     "0.2.0",
   },
   "devDependencies": {}
 }
